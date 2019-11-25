@@ -1,28 +1,56 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <span>{{ title }}</span>
+    <br>
+    doubleCount {{ doubleCount() }}
+    <br>
+    count {{ count }}
+    <button @click="handleIncrease">+</button>
+    <button @click="handleDecrease">-</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapState, mapMutations, mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: "counter",
+  computed: {
+    title: function() {
+      return this.$store.state.title;
+    },
+
+    ...mapState("counter", {
+      count: state => state.count
+    })
+  },
+  methods: {
+    handleIncrease: function() {
+      this.increase();
+    },
+
+    handleDecrease: function() {
+      this.decrease();
+    },
+
+    setTitle: function(title) {
+      this.$store.dispatch("setTitle", title);
+    },
+
+    ...mapMutations("counter", {
+      increaseBy: "increase",
+      decreaseBy: "decrease"
+    }),
+
+    ...mapActions("counter", {
+      increase: "increaseOne",
+      decrease: "decreaseOne"
+    }),
+
+    ...mapGetters("counter", ["doubleCount"])
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
