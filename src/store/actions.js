@@ -1,7 +1,11 @@
 import { TITLE } from './mutation-types'
 
-actions = {
+const actions = {
     setTitle({ commit }, title) {
         commit(TITLE.SET, title)
     }
+}
+
+export default {
+    actions
 }
