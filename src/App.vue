@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <Counter></Counter>
+    <Router></Router>
   </div>
 </template>
 
 <script>
-import Counter from "./components/Counter";
+import Router from "./components/Router";
 
 export default {
   name: "app",
   components: {
-    Counter
+    Router
   }
 };
 </script>
