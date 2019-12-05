@@ -1,0 +1,483 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Learn CSS Layout</title>
+    <style>
+      body {
+        margin-bottom: 120px;
+      }
+      h4 {
+        text-align: center;
+      }
+      #margin {
+        width: 200px;
+        margin: 0 auto;
+        border: 2px solid green;
+      }
+
+      #max-width {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      #box-model {
+        margin: 0 auto;
+      }
+      #box-model .simple {
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid green;
+      }
+      #box-model .fancy {
+        width: 500px;
+        margin: 20px auto;
+        padding: 50px;
+        border: 10px solid green;
+      }
+      #box-sizing {
+        margin: 0 auto;
+      }
+      #box-sizing .simple {
+        box-sizing: border-box;
+        width: 500px;
+        margin: 20px auto;
+        border: 2px solid green;
+      }
+      #box-sizing .fancy {
+        box-sizing: border-box;
+        width: 500px;
+        margin: 20px auto;
+        padding: 50px;
+        border: 10px solid green;
+      }
+      #position-layout {
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        border: 2px solid green;
+      }
+      #position-layout .nav {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 200px;
+        padding-left: 20px;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #position-layout section {
+        margin-left: 200px;
+        border: 2px solid orange;
+        box-sizing: border-box;
+      }
+      #float {
+        overflow: auto;
+        border: 2px solid orange;
+      }
+      #float img {
+        width: 200px;
+        float: left;
+        margin: 0 1em 1em 0;
+      }
+      #float:after {
+        content: '.';
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      #float-layout {
+        width: 90%;
+        margin: 0 auto;
+        border: 2px solid green;
+      }
+      #float-layout .nav {
+        float: left;
+        width: 200px;
+        padding-left: 20px;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #float-layout section {
+        margin-left: 200px;
+        border: 2px solid orange;
+        box-sizing: border-box;
+      }
+      #float-layout:after {
+        content: '.';
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      #media-query {
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        border: 2px solid green;
+      }
+      #media-query .nav {
+        padding-left: 20px;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #media-query section {
+        border: 2px solid orange;
+        box-sizing: border-box;
+      }
+      @media screen and (min-width: 600px) {
+        #media-query .nav {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          width: 25%;
+        }
+        #media-query section {
+          margin-left: 25%;
+        }
+      }
+      @media screen and (max-width: 599px) {
+        #media-query .nav li {
+          display: inline;
+        }
+      }
+      #inline-block-layout {
+        width: 90%;
+        margin: 0 auto;
+        border: 2px solid green;
+        font-size: 0;
+      }
+      #inline-block-layout .nav {
+        display: inline-block;
+        vertical-align: top;
+        width: 25%;
+        padding-left: 20px;
+        border: 2px solid red;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      #inline-block-layout .column {
+        display: inline-block;
+        vertical-align: top;
+        width: 75%;
+        border: 2px solid red;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+      #inline-block-layout .column section {
+        border: 2px solid orange;
+        box-sizing: border-box;
+      }
+      #flexbox-layout {
+        display: flex;
+        width: 90%;
+        margin: 0 auto;
+        border: 2px solid green;
+      }
+      #flexbox-layout .nav {
+        width: 200px;
+        padding-left: 20px;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #flexbox-layout .column {
+        flex: 1;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #flexbox-layout .column section {
+        border: 2px solid orange;
+        box-sizing: border-box;
+      }
+      #flexbox-complex-layout {
+        display: flex;
+        width: 90%;
+        margin: 0 auto;
+        border: 2px solid green;
+      }
+      #flexbox-complex-layout .nav {
+        width: 200px;
+        min-width: 100px;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #flexbox-complex-layout .carousel {
+        flex: none;
+        width: 200px;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #flexbox-complex-layout .column1 {
+        flex: 1;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #flexbox-complex-layout .column2 {
+        flex: 2;
+        border: 2px solid red;
+        box-sizing: border-box;
+      }
+      #flexbox-easy-center {
+        display: flex;
+        width: 90%;
+        height: 100px;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid green;
+        box-sizing: border-box;
+      }
+      #flexbox-easy-center section {
+        border: 2px solid green;
+        box-sizing: border-box;
+      }
+      #column {
+        padding: 1em;
+        column-count: 3;
+        column-gap: 1em;
+        border: 2px solid green;
+        box-sizing: border-box;
+      }
+      #footer {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        height: 70px;
+        width: 100%;
+        border: 2px solid green;
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>margin</h4>
+    <div id="margin">
+      Learn how to use margin.
+    </div>
+    <br />
+    <h4>max-width</h4>
+    <div id="max-width">
+      When browser's viewport is too small to show content, use max-width can
+      avoid browser scroll. This is a long text.This is a long text.This is a
+      long text.This is a long text.This is a long text.This is a long text.This
+      is a long text.This is a long text.This is a long text.
+    </div>
+    <br />
+    <h4>box-model</h4>
+    <div id="box-model">
+      <div class="simple">
+        I'm small, and my width is 500px.
+      </div>
+      <div class="fancy">
+        I'm big, and my width is 500px.
+      </div>
+    </div>
+    <br />
+    <h4>box-sizing</h4>
+    <div id="box-sizing">
+      <div class="simple">
+        I'm use box-sizing, My width is 500px.
+      </div>
+      <div class="fancy">
+        I'm use box-sizing, My width is 500px.
+      </div>
+    </div>
+    <br />
+    <h4>position layout</h4>
+    <div id="position-layout">
+      <div class="nav">
+        <li><a href="#">menuItem1</a></li>
+        <li><a href="#">menuItem2</a></li>
+        <li><a href="#">menuItem3</a></li>
+      </div>
+      <section>
+        This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.
+      </section>
+      <section>
+        This is a long section too.This is a long section too.This is a long
+        section too.This is a long section too.This is a long section too.This
+        is a long section too.This is a long section too.This is a long section
+        too.This is a long section too.This is a long section too.This is a long
+        section too.This is a long section too.
+      </section>
+    </div>
+    <br />
+    <h4>float</h4>
+    <div id="float">
+      <img
+        src="https://cn.bing.com/th?id=OHR.RhinosOxpecker_ZH-CN6392794613_1920x1080.jpg"
+      />
+      <section>
+        犀牛（学名：Dicerorhinus）是哺乳类犀科的总称，有4属5种。是世界上最大的奇蹄目动物，
+        犀类动物腿短、体肥笨拙，体长2.2-4.5米，肩高1.2-2米，体重2000-5000千克。前后肢均三趾；
+        皮厚粗糙，并于肩腰等处成褶皱排列，毛被稀少而硬，甚或大部无毛；耳呈卵圆形，头大而长，颈短粗，长唇延长伸出；
+        头部有实心的独角或双角（有的雌性无角），起源于真皮，角脱落仍能复生；无犬齿；尾细短，身体呈黄褐、褐、黑或灰色。
+        栖息于低地或海拔2000多米的高地。夜间活动，独居或结成小群。生活区域从不脱离水源。食性因种类而异，
+        以草类为主，或以树叶、嫩枝、野果、地衣等为食物。母兽妊娠期18-19个月。寿命30-50年。
+        因犀牛角的装饰和药用价值而被大量捕捉，除白犀外均为濒危物种。分布于亚洲南部、东南亚和非洲撒哈拉以南地区
+        9月22日是“世界犀牛日”（World Rhino
+        Day）。2010年，“世界犀牛日”由南非世界自然基金会创办（WWF-South
+        Africa），现已为全世界广泛接受。该活动旨在关注全球稀有动物。
+        在渐新世出现了有史以来最大陆生哺乳动物——巨犀，它体格健壮和高大，体长约8米，身高5米。不过虽然巨犀和犀牛同属奇蹄目，但并不属于犀牛科。
+        中新世的后期，出现了独角犀牛的祖先。独角犀牛仅存爪哇犀牛和印度犀牛，均分布在亚洲。在中新世以后出现的犀牛体型与现代犀牛相接近。
+        其中有下唇比上唇略大些的大唇犀，下颌有两颗大牙向前伸出，生活在沼泽地带，以水中的植物为食。
+        上新世后期（约300万年前），双角犀牛出现。双角犀牛有苏门达腊犀、白犀牛和黑犀牛。第四纪时期人类已经出现，早期的犀牛以板齿犀、披毛犀为代表。
+        板齿犀个体巨大，5米长，身披厚甲，在额部生有大角，约2米长，牙齿的齿冠高，呈方柱状，草地上生活，
+        更新世时期在中国华北的及欧洲等地曾有板齿犀生活；披毛犀和猛犸象外形相似，巨大的身体及长着粗毛的厚皮可以抵御寒冷，长鼻上有一对巨角，
+        前面一支最长可达1米，生活在寒冷地带。这两种犀类先后在不同的时期都已经灭绝了。
+        在犀类的后代中，现仅残存有犀牛科的4属5种，主要分布在亚洲和非洲，其中分布在亚洲的犀牛已经濒临绝种。
+        主要是因为犀牛角作为药材，其实犀牛角跟指甲是一样的构造，随数量减少现在也不容易买到真正的犀牛角，
+        市场还得以购买是因为现在商贩懂得以牛角替代来获利，甚至用相似成分的猫狗爪磨成假货变换充数。
+      </section>
+    </div>
+    <br />
+    <h4>float layout</h4>
+    <div id="float-layout">
+      <div class="nav">
+        <li><a href="#">menuItem1</a></li>
+        <li><a href="#">menuItem2</a></li>
+        <li><a href="#">menuItem3</a></li>
+      </div>
+      <section>
+        This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.
+      </section>
+      <section>
+        This is a long section too.This is a long section too.This is a long
+        section too.This is a long section too.This is a long section too.This
+        is a long section too.This is a long section too.This is a long section
+        too.This is a long section too.This is a long section too.This is a long
+        section too.This is a long section too.
+      </section>
+    </div>
+    <br />
+    <h4>media query</h4>
+    <div id="media-query">
+      <div class="nav">
+        <li><a href="#">menuItem1</a></li>
+        <li><a href="#">menuItem2</a></li>
+        <li><a href="#">menuItem3</a></li>
+      </div>
+      <section>
+        This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.This is a long section.This is a long section.This is a long
+        section.
+      </section>
+      <section>
+        This is a long section too.This is a long section too.This is a long
+        section too.This is a long section too.This is a long section too.This
+        is a long section too.This is a long section too.This is a long section
+        too.This is a long section too.This is a long section too.This is a long
+        section too.This is a long section too.
+      </section>
+    </div>
+    <br />
+    <h4>inline block layout</h4>
+    <div id="inline-block-layout">
+      <div class="nav">
+        <li><a href="#">menuItem1</a></li>
+        <li><a href="#">menuItem2</a></li>
+        <li><a href="#">menuItem3</a></li>
+      </div>
+      <div class="column">
+        <section>
+          This is a long section.This is a long section.This is a long
+          section.This is a long section.This is a long section.This is a long
+          section.This is a long section.This is a long section.This is a long
+          section.This is a long section.This is a long section.This is a long
+          section.
+        </section>
+        <section>
+          This is a long section too.This is a long section too.This is a long
+          section too.This is a long section too.This is a long section too.This
+          is a long section too.This is a long section too.This is a long
+          section too.This is a long section too.This is a long section too.This
+          is a long section too.This is a long section too.
+        </section>
+      </div>
+    </div>
+    <br />
+    <h4>flexbox layout</h4>
+    <div id="flexbox-layout">
+      <div class="nav">
+        <li><a href="#">menuItem1</a></li>
+        <li><a href="#">menuItem2</a></li>
+        <li><a href="#">menuItem3</a></li>
+      </div>
+      <div class="column">
+        <section>
+          This is a long section.This is a long section.This is a long
+          section.This is a long section.This is a long section.This is a long
+          section.This is a long section.This is a long section.This is a long
+          section.This is a long section.This is a long section.This is a long
+          section.
+        </section>
+        <section>
+          This is a long section too.This is a long section too.This is a long
+          section too.This is a long section too.This is a long section too.This
+          is a long section too.This is a long section too.This is a long
+          section too.This is a long section too.This is a long section too.This
+          is a long section too.This is a long section too.
+        </section>
+      </div>
+    </div>
+    <h4>flexbox complex layout</h4>
+    <div id="flexbox-complex-layout">
+      <div class="nav">
+        I have 200px width when the space is enough, otherwise my width is
+        100px.
+      </div>
+      <div class="carousel">
+        I have 200px width whenever the space is enough or not.
+      </div>
+      <div class="column1">
+        I have one third width of the left space.
+      </div>
+      <div class="column2">
+        I have two third width of the left space.
+      </div>
+    </div>
+    <h4>flexbox easy center</h4>
+    <div id="flexbox-easy-center">
+      <section>
+        I'm in the middle of the container.
+      </section>
+    </div>
+    <br />
+    <h4>column</h4>
+    <div id="column">
+      犀牛（学名：Dicerorhinus）是哺乳类犀科的总称，有4属5种。是世界上最大的奇蹄目动物，
+      犀类动物腿短、体肥笨拙，体长2.2-4.5米，肩高1.2-2米，体重2000-5000千克。前后肢均三趾；
+      皮厚粗糙，并于肩腰等处成褶皱排列，毛被稀少而硬，甚或大部无毛；耳呈卵圆形，头大而长，颈短粗，长唇延长伸出；
+      头部有实心的独角或双角（有的雌性无角），起源于真皮，角脱落仍能复生；无犬齿；尾细短，身体呈黄褐、褐、黑或灰色。
+      栖息于低地或海拔2000多米的高地。夜间活动，独居或结成小群。生活区域从不脱离水源。食性因种类而异，
+      以草类为主，或以树叶、嫩枝、野果、地衣等为食物。母兽妊娠期18-19个月。寿命30-50年。
+      因犀牛角的装饰和药用价值而被大量捕捉，除白犀外均为濒危物种。分布于亚洲南部、东南亚和非洲撒哈拉以南地区
+      9月22日是“世界犀牛日”（World Rhino
+      Day）。2010年，“世界犀牛日”由南非世界自然基金会创办（WWF-South
+      Africa），现已为全世界广泛接受。该活动旨在关注全球稀有动物。
+      在渐新世出现了有史以来最大陆生哺乳动物——巨犀，它体格健壮和高大，体长约8米，身高5米。不过虽然巨犀和犀牛同属奇蹄目，但并不属于犀牛科。
+      中新世的后期，出现了独角犀牛的祖先。独角犀牛仅存爪哇犀牛和印度犀牛，均分布在亚洲。在中新世以后出现的犀牛体型与现代犀牛相接近。
+      其中有下唇比上唇略大些的大唇犀，下颌有两颗大牙向前伸出，生活在沼泽地带，以水中的植物为食。
+      上新世后期（约300万年前），双角犀牛出现。双角犀牛有苏门达腊犀、白犀牛和黑犀牛。第四纪时期人类已经出现，早期的犀牛以板齿犀、披毛犀为代表。
+      板齿犀个体巨大，5米长，身披厚甲，在额部生有大角，约2米长，牙齿的齿冠高，呈方柱状，草地上生活，
+      更新世时期在中国华北的及欧洲等地曾有板齿犀生活；披毛犀和猛犸象外形相似，巨大的身体及长着粗毛的厚皮可以抵御寒冷，长鼻上有一对巨角，
+      前面一支最长可达1米，生活在寒冷地带。这两种犀类先后在不同的时期都已经灭绝了。
+      在犀类的后代中，现仅残存有犀牛科的4属5种，主要分布在亚洲和非洲，其中分布在亚洲的犀牛已经濒临绝种。
+      主要是因为犀牛角作为药材，其实犀牛角跟指甲是一样的构造，随数量减少现在也不容易买到真正的犀牛角，
+      市场还得以购买是因为现在商贩懂得以牛角替代来获利，甚至用相似成分的猫狗爪磨成假货变换充数。
+    </div>
+    <div id="footer">
+      Do not see me, I will stay here forever.
+    </div>
+  </body>
+</html>
