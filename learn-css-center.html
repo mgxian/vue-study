@@ -58,6 +58,12 @@
         left: 50%;
       }
 
+      #align-center > .flex {
+        display: flex;
+        justify-content: center;
+        border: 2px solid purple;
+      }
+
       #vertical-center > div {
         margin-top: 50px;
         width: 100%;
@@ -118,6 +124,12 @@
         transform: translate(0, -50%);
         top: 50%;
       }
+
+      #vertical-center > .flex {
+        display: flex;
+        align-items: center;
+        border: 2px solid purple;
+      }
     </style>
   </head>
 
@@ -142,6 +154,9 @@
           I am transform
         </div>
       </div>
+      <div class="flex">
+        <div class="child">I am flex</div>
+      </div>
     </div>
     <h4>vertical center</h4>
     <div id="vertical-center">
@@ -156,6 +171,9 @@
       </div>
       <div class="transform">
         <div class="child">I am transform</div>
+      </div>
+      <div class="flex">
+        <div class="child">I am flex</div>
       </div>
     </div>
   </body>
