@@ -19,32 +19,43 @@
         border: 2px solid black;
       }
 
-      #align-center > #inline {
+      #align-center > .inline {
         text-align: center;
         border: 2px solid green;
       }
 
-      #align-center > #inline > .child {
+      #align-center > .inline > .child {
         display: inline;
       }
 
-      #align-center > #block-width {
+      #align-center > .block-width {
         border: 2px solid blue;
       }
 
-      #align-center > #block-width > .child {
+      #align-center > .block-width > .child {
         display: block;
         width: 200px;
         margin: 0 auto;
       }
 
-      #align-center > #block-no-width {
+      #align-center > .block-no-width {
         border: 2px solid red;
         text-align: center;
       }
 
-      #align-center > #block-no-width > .child {
+      #align-center > .block-no-width > .child {
         display: inline;
+      }
+
+      #align-center > .transform {
+        position: relative;
+        border: 2px solid orange;
+      }
+
+      #align-center > .transform > .child {
+        position: absolute;
+        transform: translate(-50%, 0);
+        left: 50%;
       }
 
       #vertical-center > div {
@@ -59,12 +70,12 @@
         border: 2px solid black;
       }
 
-      #vertical-center > #block {
+      #vertical-center > .block {
         position: relative;
         border: 2px solid green;
       }
 
-      #vertical-center > #block > .child {
+      #vertical-center > .block > .child {
         display: block;
         position: absolute;
         margin: auto;
@@ -72,29 +83,40 @@
         bottom: 0;
       }
 
-      #vertical-center > #inline {
+      #vertical-center > .inline {
         border: 2px solid blue;
         line-height: 100px;
       }
 
-      #vertical-center > #inline > .child {
+      #vertical-center > .inline > .child {
         display: inline;
       }
 
-      #vertical-center > #inline-block {
+      #vertical-center > .inline-block {
         border: 2px solid red;
       }
 
-      #vertical-center > #inline-block:after {
+      #vertical-center > .inline-block:after {
         content: '';
         height: 100%;
         display: inline-block;
         vertical-align: middle;
       }
 
-      #vertical-center > #inline-block > .child {
+      #vertical-center > .inline-block > .child {
         display: inline-block;
         vertical-align: middle;
+      }
+
+      #vertical-center > .transform {
+        position: relative;
+        border: 2px solid orange;
+      }
+
+      #vertical-center > .transform > .child {
+        position: absolute;
+        transform: translate(0, -50%);
+        top: 50%;
       }
     </style>
   </head>
@@ -102,30 +124,38 @@
   <body>
     <h4>align center</h4>
     <div id="align-center">
-      <div id="inline">
+      <div class="inline">
         <div class="child">I am inline</div>
       </div>
-      <div id="block-width">
+      <div class="block-width">
         <div class="child">
           I am block with width
         </div>
       </div>
-      <div id="block-no-width">
+      <div class="block-no-width">
         <div class="child">
           I am block without width
+        </div>
+      </div>
+      <div class="transform">
+        <div class="child">
+          I am transform
         </div>
       </div>
     </div>
     <h4>vertical center</h4>
     <div id="vertical-center">
-      <div id="block">
+      <div class="block">
         <div class="child">I am block</div>
       </div>
-      <div id="inline">
+      <div class="inline">
         <div class="child">I am inline</div>
       </div>
-      <div id="inline-block">
+      <div class="inline-block">
         <div class="child">I am inline-block</div>
+      </div>
+      <div class="transform">
+        <div class="child">I am transform</div>
       </div>
     </div>
   </body>
